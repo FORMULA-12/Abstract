@@ -1,0 +1,414 @@
+{% load static %}
+{% load mathfilters %}
+{% load replace %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Abstract - Интернет-мазагин книг</title>
+    <link rel="icon" href="{% static 'assets/favicon.png' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tt-norms-medium" type="text/css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tt-norms-regular" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  </head>
+
+  <body>
+
+    <div onclick="$(window).scrollTop(0);" class="move-top fixed-bottom"><i class="fas fa-angle-up"></i></div>
+  
+    <div id="sidebar-wallpaper"></div>
+
+    <nav id="sidebar">
+      
+      <div class="sidebar-header">
+        <h3 class="text-center">&nbsp;&nbsp;Вернуться&nbsp;&nbsp;<i class="fas fa-angle-right"></i></h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <li>
+          <a class="text-center mb-2">Главная</a>
+        </li>
+        <li>
+          <a class="text-center mb-2">Каталог</a>
+        </li>
+        <li>
+          <a class="text-center mb-2">Рейтинг</a>
+        </li>
+        <li>
+          <a class="text-center mb-2">Новости</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div id="cart-wallpaper"></div>
+
+    <nav id="cart">
+      
+      <div id="cart-back" class="cart-header">
+        <h3 class="text-center">&nbsp;&nbsp;Вернуться&nbsp;&nbsp;<i class="fas fa-angle-right"></i></h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <li>
+          <a class="text-center mb-2">Главная</a>
+        </li>
+        <li>
+          <a class="text-center mb-2">Каталог</a>
+        </li>
+        <li>
+          <a class="text-center mb-2">Рейтинг</a>
+        </li>
+        <li>
+          <a class="text-center mb-2">Новости</a>
+        </li>
+      </ul>
+
+      <button class="btn btn-lg btn-buy text-center">Оформить заказ</button>
+
+    </nav>
+    
+    <nav id="navbar" class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+
+        <a id="sidebar-mobile" type="button" class="navbar-menu-mobile mr-md-3 mr-sm-5 d-lg-none" href="#"><i class="fa fa-bars"></i></a>
+      
+        <a class="navbar-brand" href="#">
+          <div id="logo" class="d-sm-block d-none">
+            <div id="round"></div>
+          </div>
+          Abstract
+        </a>
+
+        <div class="collapse navbar-collapse justify-content-center">
+          <ul class="navbar-nav">
+            <li class="nav-item pr-3">
+              <a class="nav-link" href="#">Главная</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link" href="{% url 'catalog' %}">Каталог</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link" href="#">Рейтинг</a>
+            </li>
+            <li class="nav-item pl-3">
+              <a class="nav-link" href="#">Новости</a>
+            </li>
+          </ul>
+        </div>
+
+        <button class="btn btn-sm btn-buy d-lg-block d-none float-right">Войти</button>
+
+        <button id="cart-mobile" class="btn btn-basket ml-md-3 ml-sm-5">
+          <i class="fas fa-shopping-basket"></i>
+          <span class="p-1 bg-danger rounded-circle"></span>
+        </button>
+
+      </div>
+    </nav>
+
+    <nav id="search" class="navbar navbar-expand-lg">
+      <div class="container">
+        <form id="search_form" action="{% url 'catalog' %}">
+          <div class="input-group" style="margin-bottom:1px;">
+            <input type="text" class="form-control" placeholder="Найти" name="search">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+        </form>
+
+        <div class="dropdown dropdown-category d-none d-lg-block">
+          <button class="btn" type="button" id="DropDownLanguage" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+            Категория<i class="fas fa-angle-down"></i>
+          </button>
+          <form id="category_form" action="{% url 'catalog' %}">
+            <div class="dropdown-menu" aria-labelledby="DropDownCategory">
+              <a onclick="$('#category').val('0');$('form#category_form').submit();" class="dropdown-item">Художественная литература</a>
+              <a onclick="$('#category').val('1');$('form#category_form').submit();" class="dropdown-item">Научно-популярная литература</a>
+              <a onclick="$('#category').val('2');$('form#category_form').submit();" class="dropdown-item">Справочная литература</a>
+              <a onclick="$('#category').val('3');$('form#category_form').submit();" class="dropdown-item">Документальная проза</a>
+              <a onclick="$('#category').val('4');$('form#category_form').submit();" class="dropdown-item">Учебная литература</a>  
+            </div>
+            <input id="category" class="d-none" type="text" name="category">
+          </form>
+        </div>
+
+        <div class="dropdown dropdown-language d-none d-lg-block">
+          <button class="btn" type="button" id="DropDownCategory" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+            Язык<i class="fas fa-angle-down"></i>
+          </button>
+          <form id="language_form" action="{% url 'catalog' %}">
+            <div class="dropdown-menu" aria-labelledby="DropDownLanguage">
+              <a onclick="$('#language').val('RU');$('form#language_form').submit();" class="dropdown-item">Русский</a>
+              <a onclick="$('#language').val('UK');$('form#language_form').submit();" class="dropdown-item">Украинский</a>
+              <a onclick="$('#language').val('EN');$('form#language_form').submit();" class="dropdown-item">Английский</a>
+              <a onclick="$('#language').val('DE');$('form#language_form').submit();" class="dropdown-item">Немецкий</a>
+              <a onclick="$('#language').val('FR');$('form#language_form').submit();" class="dropdown-item">Французский</a>  
+            </div>
+            <input id="language" class="d-none" type="text" name="language">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container library-list my-5">
+      <div class="row">
+
+        {% for item in book %}
+        <div class="col-lg-3 col-md-4 col-sm-6 card-form" style="opacity:1;">
+          <div class="card card-book">
+            <img class="card-img-top mx-auto" src="{% get_media_prefix %}{{ item.picture }}" alt="Картинка">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ item.title }}</h5>
+              <p class="card-text text-center">{{ item.author }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+      </div> 
+    </div>
+
+    <div class="footer-wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#000" fill-opacity="1" d="M0,320L48,293.3C96,267,192,213,288,213.3C384,213,480,267,576,266.7C672,267,768,213,864,202.7C960,192,1056,224,1152,245.3C1248,267,1344,277,1392,282.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg> 
+    </div>
+    
+    <footer class="page-footer font-small pt-2">
+
+      <div class="container text-center text-md-left">
+        
+    
+        <div class="row">
+    
+          <div class="col-md-8 mt-md-0 mt-3">
+    
+            <h5 class="mb-3">Описание</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a style="color:#808080;">Вместе с нашими изданиями вы можете отправиться в кругосветные путешествия, понять основы мироздания, окунуться в тайны космоса и даже найти себя в сфере оккультизма и эзотерики. У нас есть все – начиная от технологических справочников и заканчивая комиксами и яркими журналами. У нас имеется огромная база активных читателей, состоящих из более 3 млн заказчиков, которая постоянно пополняется новыми клиентами.</a>
+              </li>
+            </ul>
+            
+    
+          </div>
+
+          <hr class="clearfix w-100 d-md-none pb-3">
+    
+          <div class="col-md-2 mb-md-0 mb-3">
+    
+            <h5>Ссылки</h5>
+    
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#!">Оформление заказа</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!">Доставка и оплата</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!">Новости и акции</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!">Обратная связь</a>
+              </li>
+            </ul>
+    
+          </div>
+
+          <div class="col-md-2 mb-md-0 mb-3">
+    
+            <h5>Помощь</h5>
+    
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#!">Техническая поддержка</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!">Сообщить о нарушении</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!">Подробности проекта</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!">Партнёрские программы</a>
+              </li>
+            </ul>
+    
+          </div>
+    
+        </div>
+    
+      </div>
+
+      <div class="container footer-line"></div>
+    
+      <div class="footer-copyright text-center py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+              <a class="navbar-brand" href="#">
+                <div class="logo">
+                  <div class="logo-round"></div>
+                </div>
+                Abstract<span class="footer-logo-line">|</span>
+              </a>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-12">
+              <p>Abstract 2022 © Все права защищены.</p>
+            </div>
+
+            <div class="col-md-7 col-sm-12 mt-md-0 mt-sm-3">
+              <ul class="list-unstyled list-inline float-md-right">
+                <li class="list-inline-item">
+                  <i class="fab fa-telegram"></i>
+                </li>
+                <li class="list-inline-item">
+                  <i class="fab fa-instagram mx-2"></i>
+                </li>
+                <li class="list-inline-item">
+                  <i class="fab fa-whatsapp mr-2"></i>
+                </li>
+                <li class="list-inline-item">
+                  <i class="fab fa-viber"></i>
+                </li>  
+              </ul>
+            </div>
+          </div>
+       
+        </div>  
+      </div>
+    
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      
+      $(document).ready(function() {  
+
+  
+        $('.sidebar-header').on('click', function() {
+          
+          if ($('#sidebar-wallpaper').is(":visible")) { 
+            $('#sidebar-wallpaper').hide();
+          } else {
+            $('#sidebar-wallpaper').css("display", "block");
+          }
+
+          $('#sidebar, #content').toggleClass('active');
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+
+        });
+
+        $('#sidebar-mobile').on('click', function() {
+          
+          if ($('#sidebar-wallpaper').is(":visible")) { 
+            $('#sidebar-wallpaper').hide();
+          } else {
+            $('#sidebar-wallpaper').css("display", "block");
+          }
+
+          $('#sidebar, #content').toggleClass('active');
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+
+        });
+
+        $('#sidebar-wallpaper').on('click', function() {
+
+          if ($('#sidebar-wallpaper').is(":visible")) {
+            $('#sidebar-wallpaper').hide();       
+          } else {
+            $('#sidebar-wallpaper').css("display", "block");
+          }
+          
+          $('#sidebar, #content').toggleClass('active');
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        
+        });
+
+
+
+        $('#cart-mobile').on('click', function() {
+          
+          if ($('#cart-wallpaper').is(":visible")) { 
+            $('#cart-wallpaper').hide();
+          } else {
+            $('#cart-wallpaper').css("display", "block");
+          }
+
+          $('#cart, #content').toggleClass('active');
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+
+        });
+
+        $('#cart-wallpaper').on('click', function() {
+
+          if ($('#cart-wallpaper').is(":visible")) {
+            $('#cart-wallpaper').hide();       
+          } else {
+            $('#cart-wallpaper').css("display", "block");
+          }
+          
+          $('#cart, #content').toggleClass('active');
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        
+        });
+
+        $('#cart-back').on('click', function() {
+
+          if ($('#cart-wallpaper').is(":visible")) {
+            $('#cart-wallpaper').hide();       
+          } else {
+            $('#cart-wallpaper').css("display", "block");
+          }
+          
+          $('#cart, #content').toggleClass('active');
+          $('.collapse.in').toggleClass('in');
+          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        
+        });
+
+        $(document).scroll(function() {
+          if($(window).scrollTop() > 75){
+            $("#navbar").css("box-shadow","0 2px 8px rgba(0, 0, 0, 0.12)");
+            if ($(".move-top").css("opacity") == 0) {
+              $(".move-top").fadeTo( "fast", 1 );
+            }
+          }
+          else if($(window).scrollTop() < 75){
+            $("#navbar").css("box-shadow","0 1px 0.5px 0.5px rgba(0, 0, 0, 0.1)");
+            if ($(".move-top").css("opacity") == 1) {
+              $(".move-top").fadeTo( "fast", 0 );
+            }
+          }
+        });
+
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+
+      });
+    </script>
+  </body>
+
+</html>
+
