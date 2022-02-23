@@ -1,4 +1,14 @@
 from django.db import models
+import uuid
+import os
+
+
+def path_and_rename(instance, filename):
+    upload_to = 'books/'
+    ext = filename.split('.')[-1]
+    filename = '{}.{}'.format(str(uuid.uuid4()), ext)
+
+    return os.path.join(upload_to, filename)
 
 
 class Tags(models.Model):
@@ -27,7 +37,7 @@ class Books(models.Model):
     title = models.CharField(null=False, max_length=100, verbose_name='Название')
     description = models.CharField(null=False, blank=True, max_length=1000, verbose_name='Описание')
     author = models.CharField(null=False, max_length=100, verbose_name='Автор')
-    picture = models.ImageField(upload_to='books/', blank=True)
+    picture = models.ImageField(upload_to=path_and_rename, blank=True)
     category = models.CharField(null=False, max_length=1, choices=CATEGORY, default='0', verbose_name='Категория')
     language = models.CharField(null=False, max_length=2, choices=LANGUAGES, default='RU', verbose_name='Язык')
     date = models.CharField(null=False, blank=True, max_length=20, verbose_name='Дата')
