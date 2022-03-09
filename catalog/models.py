@@ -20,7 +20,7 @@ class Tags(models.Model):
         verbose_name_plural = 'Теги'
         ordering = ['title']
 
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30, verbose_name='Тег')
 
 
 class Books(models.Model):
@@ -34,7 +34,7 @@ class Books(models.Model):
     CATEGORY = (('0', 'Художественная литература'), ('1', 'Научно-популярная литература'), ('2', 'Справочная литература'), ('3', 'Документальная проза'), ('4', 'Учебная литература'))
     LANGUAGES = (('RU', 'Русский'), ('UK', 'Украинский'), ('EN', 'Английский'), ('DE', 'Немецкий'), ('FR', 'Французский'), ('ES', 'Испанский'))
 
-    title = models.CharField(null=False, max_length=100, verbose_name='Название')
+    title = models.CharField(null=False, max_length=120, verbose_name='Название')
     description = models.CharField(null=False, blank=True, max_length=1000, verbose_name='Описание')
     author = models.CharField(null=False, max_length=100, verbose_name='Автор')
     picture = models.ImageField(upload_to=path_and_rename, blank=True)
