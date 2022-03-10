@@ -4,10 +4,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5%t1yn5me07zij4b93%j&*9k2n+^_$yuyz&a!oep0zlpe5tm#*'
 
@@ -37,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mathfilters',
     'book.apps.BookConfig',
+    'home.apps.HomeConfig',
     'catalog.apps.CatalogConfig',
 ]
 
