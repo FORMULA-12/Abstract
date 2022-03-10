@@ -33,6 +33,7 @@ class Books(models.Model):
 
     CATEGORY = (('0', 'Художественная литература'), ('1', 'Научно-популярная литература'), ('2', 'Справочная литература'), ('3', 'Документальная проза'), ('4', 'Учебная литература'))
     LANGUAGES = (('RU', 'Русский'), ('UK', 'Украинский'), ('EN', 'Английский'), ('DE', 'Немецкий'), ('FR', 'Французский'), ('ES', 'Испанский'))
+    COVER = (('SOFT', 'Мягкий'), ('SOLID', 'Твердый'))
 
     title = models.CharField(null=False, max_length=120, verbose_name='Название')
     description = models.CharField(null=False, blank=True, max_length=1000, verbose_name='Описание')
@@ -40,6 +41,7 @@ class Books(models.Model):
     picture = models.ImageField(upload_to=path_and_rename, blank=True)
     category = models.CharField(null=False, max_length=1, choices=CATEGORY, default='0', verbose_name='Категория')
     language = models.CharField(null=False, max_length=2, choices=LANGUAGES, default='RU', verbose_name='Язык')
+    cover = models.CharField(null=False, max_length=5, choices=LANGUAGES, default='SOFT', verbose_name='Переплет')
     date = models.CharField(null=False, blank=True, max_length=20, verbose_name='Дата')
     tags = models.ManyToManyField(Tags, verbose_name='Теги')
     presence = models.BooleanField(null=False, default=True, verbose_name='В наличии')
