@@ -11,7 +11,7 @@
 }
 
 .notification p {
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif;                                               
   padding: 0;
   margin-top:6px;
 }
@@ -40,7 +40,7 @@
 
 .navbar {
   height: 80px;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif;  
   background: #fff;
 }
 
@@ -154,7 +154,7 @@
   background: #000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   color: #fff;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   font-size: 1.1rem;
   border-radius: 50px;
   padding-left: 30px;
@@ -234,6 +234,7 @@ div#logo>div#round {
 
 .navbar .navbar-nav .nav-link {
   font-size: 1.17rem;
+  font-weight: 500;
   color: #000;
   text-decoration: none;
   position: relative;
@@ -263,13 +264,17 @@ div#logo>div#round {
   transform: scaleX(1);
 }
 
+.navbar .auth {
+  font-weight: 500;
+}
+
 .page-footer {
   background: #000;
 }
 
 .page-footer h5 {
   color: #fff;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
 }
 
 .page-footer ul li a {
@@ -429,7 +434,6 @@ div#logo>div#round {
     border-radius: 8px;
     image-rendering: optimizeSpeed;
     transition: 0.2s;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   }
 
 }
@@ -510,7 +514,7 @@ div#logo>div#round {
   }
 
   .card-book .card-title {
-    font-family: 'TTNormsMedium';
+    font-family: 'TT Norms Pro', sans-serif; 
     color: #000;
     font-size: 20px !important;
     padding-left: 8px;
@@ -644,7 +648,7 @@ div#logo>div#round {
 }
 
 .card-price .card-body {
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   font-size: 18px;
   color: #fff;
   padding-top: 10px;
@@ -666,11 +670,10 @@ div#logo>div#round {
   border-radius: 8px;
   image-rendering: optimizeSpeed;
   transition: 0.2s;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
 .card-book .card-title {
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   color: #000;
   font-size: 16px;
 }
@@ -687,7 +690,7 @@ div#logo>div#round {
   background: #000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   color: #fff;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   border-radius: 14px;
   padding-left: 30px;
   padding-right: 30px;
@@ -735,7 +738,7 @@ div#logo>div#round {
 #sidebar .sidebar-header {
   padding: 19px;
   background: #000;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   font-weight: 500;
   cursor: pointer;
 }
@@ -751,7 +754,7 @@ div#logo>div#round {
 
 #sidebar ul li a {
   padding: 10px;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   font-size: 1.1em;
   font-weight: 500;
   position: relative;
@@ -851,7 +854,7 @@ a.article:hover {
 #cart .cart-header {
   padding: 19px;
   background: #000;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   font-size: 1.7rem;
   font-weight: 600;
   cursor: pointer;
@@ -868,7 +871,7 @@ a.article:hover {
 
 #cart ul li a {
   padding: 10px;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   font-size: 1.1em;
   font-weight: 500;
   position: relative;
@@ -929,7 +932,7 @@ a[aria-expanded="true"]::before {
   background: #000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   color: #fff;
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   font-size: 1.1rem;
   border-radius: 50px;
   padding-left: 30px;
@@ -1013,7 +1016,7 @@ a[aria-expanded="true"]::before {
 }
 
 .home-novelties-title {
-  font-family: 'TTNormsMedium';
+  font-family: 'TT Norms Pro', sans-serif; 
   font-size: 36px;
   font-weight: 500;
   color: #000000;
