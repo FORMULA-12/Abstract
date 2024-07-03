@@ -1,7 +1,6 @@
 # Abstract (bookstore)
 
-![DEMO](https://imgur.com/5PjMp7E.png)
-![DEMO](https://imgur.com/jn3X1FJ.png)
+![DEMO](https://imgur.com/IHNMcPx.png)
 
 ## Description
 A simple bookstore project, for the most part, shows only the design, since there is almost no technical functionality
